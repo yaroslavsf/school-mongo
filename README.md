@@ -26,11 +26,14 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## TODO
+CRUD, show all test crud with some data in Mongosh or manager
+upload the image in swagger
 ## Installation
 
 ```bash
 $ npm install
-$ docker-compose up
+$ docker-compose up -d
 $ npx prisma generate
 ```
 
@@ -65,6 +68,9 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Swagger
+http://localhost:3000/api#/
 
 ## Support
 

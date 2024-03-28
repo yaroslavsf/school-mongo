@@ -14,33 +14,33 @@ datasource db {
 }
 
 model User {
-  userID        String  @id @map("_id") @default(cuid())
+  userID        String   @id @default(auto()) @map("_id") @db.ObjectId
   username  String
   email     String  @unique
   password  String
-  profileImage  Bytes
-  timestamp DateTime @default(now())
+  profileImage  Bytes?
+  timestamp String
   blogs     Blog[]
   likes     Like[]
 }
 
 model Blog {
-  blogID          String  @id @map("_id") @default(cuid())
-  title       String  @unique
+  blogID      String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String  
   description String
   likesCount  Int     @default(0)
-  timestamp   DateTime @default(now())
-  userId    String  @db.ObjectId
-  user      User    @relation(fields: [userId], references: [userID])
+  timestamp   String
+  userId      String  @db.ObjectId
+  user        User    @relation(fields: [userId], references: [userID])
   likes       Like[]
 }
 
 model Like {
-  likeID          String  @id @map("_id") @default(cuid())
+  likeID      String   @id @default(auto()) @map("_id") @db.ObjectId
   userId      String  @db.ObjectId
   blogId      String  @db.ObjectId
   user        User    @relation(fields: [userId], references: [userID])
   blog        Blog    @relation(fields: [blogId], references: [blogID])
-  timestamp   DateTime @default(now())
+  timestamp   String
   // Unique constraint can be added here for uniqueness within the model
 }

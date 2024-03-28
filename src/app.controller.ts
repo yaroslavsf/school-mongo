@@ -23,7 +23,7 @@ export class AppController {
   getUsers(): Promise<any> {
     return this.appService.getUsers();
   }
-  @Post('upload')
+  @Post('/register')
   createUser(@Body() body: UserCreateDTO): Promise<any> {
     return this.appService.createUser(body);
   }
